@@ -1,14 +1,31 @@
 import React from 'react'
-import { useContext} from 'react'
+import { useContext,useState} from 'react'
 import { ProductContext } from './App';
 import { Link } from "react-router-dom";
 import './cart.css'
-import { MDBIcon,MDBNavbar} from 'mdb-react-ui-kit';
+import './button.css'
+
+import { 
+  MDBIcon,
+  MDBNavbar,
+  MDBNavbarItem,
+  MDBContainer,
+  MDBNavbarNav,
+  MDBNavbarLink,
+  MDBNavbarToggler,
+  MDBNavbarBrand,
+  MDBCollapse,
+  MDBRow,
+   MDBCol,
+
+} from 'mdb-react-ui-kit';
+
 
 
 function Home() {
 
   const {products, setProducts,addToCart,setAddToCart} = useContext(ProductContext);
+  const [showNavColor, setShowNavColor] = useState(false);
 
   const Addtocartfunc = (product) => {
 
@@ -17,89 +34,69 @@ function Home() {
       price : product.price,
       image : product.image,
       description : product.description,
+      title:product.title
     
     }
     
     setAddToCart ([...addToCart,newobject])
-    
+     
     }
  
 
 
   return (
 
-    
-    <div className="App">
+    <MDBContainer fluid light style={{ backgroundColor: '#e3f2fd' }}>
     <div >
+    <div>
     
 
-    <MDBNavbar class="navbar navbar-expand-lg navbar-dark primary-color">
-
-<a class="navbar-brand" href="#">Navbar</a>
-
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-  aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
-
-<div class="collapse navbar-collapse" id="basicExampleNav">
-
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Home
-        <span class="sr-only">(current)</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Features</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Pricing</a>
-    </li>
-
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">Dropdown</a>
-      <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-      </div>
-    </li>
-
-  </ul>
-
-  <form class="form-inline">
-    <div class="md-form my-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"></input>
-    </div>
-  </form>
-</div>
-
-</MDBNavbar>
 
 
 
 
+{/* Navbar starts here */}
+
+<MDBNavbar expand='lg' dark bgColor='primary'>
+        <MDBContainer fluid>
+          <MDBNavbarBrand >ShopWeb</MDBNavbarBrand>
+          <MDBNavbarToggler
+            type='button'
+            data-target='#navbarColor02'
+            aria-controls='navbarColor02'
+            aria-expanded='false'
+            aria-label='Toggle navigation'
+            onClick={() => setShowNavColor(!showNavColor)}>
+            <MDBIcon icon='bars' fas />
+          </MDBNavbarToggler>
+          <MDBCollapse show={showNavColor} navbar>
+            <MDBNavbarNav className='me-auto mb-2 mb-lg-0'>
+              <MDBNavbarItem className='active'>
+                <MDBNavbarLink aria-current='page' href='#'>
+                  Home
+                </MDBNavbarLink>
+              </MDBNavbarItem>
+              
+              <MDBNavbarItem>
+
+              <Link to={{pathname : '/Cart'}} > 
+               <MDBNavbarLink aria-current='page' href='#'>Cart</MDBNavbarLink>         
+               </Link>
+
+              </MDBNavbarItem>
+      
+            </MDBNavbarNav>
+          </MDBCollapse>
+        </MDBContainer>
+      </MDBNavbar>
 
 
-    <ul className ="navbar-nav mr-auto">
-        <li className="nav-item active">
-          <a className ="nav-link waves-effect" href="#">Home
-            <span className ="sr-only">(current)</span>
-          </a>
+{/* Navbar ends here */}
 
-        <Link to={{pathname : '/Cart'}} >
-        <MDBIcon fas icon="shopping-cart" /> Cart 
-          </Link>
-
-        </li>
-
-
-
-      </ul>
 
      
+
+
       
 
 
@@ -112,36 +109,91 @@ function Home() {
 
             return (
               
-              <div className='container'>
-                <div className='border'>
-               
-                <div className="col-6"  border='10px'>
+              <div >
+                <div className="border">
+              
 
-                  <div className="card testimonial-card" >
+{/* list here */}
 
-                    <div className="card-up info-color"></div>
+{/* image part */}
+<>
 
-                    <div className="avatar mx-auto white">
+<MDBContainer fluid>
+  <p></p>
+  <div >
+      <MDBRow fluid >
+
+
+        <MDBCol  md='3'   style={{ backgroundColor: '#e3f2fd'  }} >
+
+
+
                       
                     <Link to={{pathname:`/Details/${product.id}`}}>
                    
                     <img height="200px" width="200px" alt={product.title} src={product.image} key={product.id} />
                             </Link>
                      
-        
-                    </div>
-                    <div className="card-body">
-                  
-                    <button className='btn' onClick={() => Addtocartfunc(product)} >Add to cart</button>
-                      <h5>{product.price}</h5>
-                      <h6>{product.title}</h6>
-                      
-                     
+                
+</MDBCol>
 
-                    </div>
+
+
+{/* title part */}
+
+
+        <MDBCol  md='3' >
+        <div className="title">
+        <div className="card-body">
+        
+                    
+                    <h4>Title :<br></br><h6> {product.title}</h6></h4>
+                  
                   </div>
-                </div>
+                  </div>
+                  
+        </MDBCol>
+
+    
+{/* price part */}
+
+
+        <MDBCol  md='3' >
+        <div className="card-body">
+        
+      
+                  
+        <h4 className="text-success fw-bold">Price :<br></br><h6>${product.price}</h6> </h4>
+
+        </div>
+      
+        </MDBCol>
+       
+
+
+{/* add button */}
+
+<MDBCol  md='3' >
+<div className="card-body">
+
+          
+<button className='button' onClick={() => Addtocartfunc(product)} >Add to cart</button>
 </div>
+</MDBCol>
+
+
+
+        <p></p>
+      </MDBRow>
+      </div> 
+    </MDBContainer>
+</>
+</div>
+
+{/* list here ends */}
+
+
+              
 
               </div>
              
@@ -155,8 +207,8 @@ function Home() {
 
     </div>
    
-
   </div>
+  </MDBContainer>
   )
 }
 

@@ -1,0 +1,10 @@
+.button{
+
+ background-color:rgb(18,102,241);
+ color: white;
+ border-radius: 10px;
+ border-color: aliceblue;
+ padding: 10px;
+ margin: 40px;
+ font-family: Verdana;
+}
