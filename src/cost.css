@@ -1,0 +1,11 @@
+.cost{
+
+background-color: rgb(255, 234, 47);
+color: blue;
+border-radius: 10px;
+font-family: sans-serif;
+font-size: xx-large;
+border-color: black ;
+border-style:groove;
+padding: 10px;
+}

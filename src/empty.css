@@ -1,0 +1,10 @@
+.empty{
+
+    font-family:Verdana;
+    color:black;
+    background-color: orange;
+    width: fit-content;
+    margin-left: 45%;
+    border-radius: 10px;
+    border-style: groove;
+}
