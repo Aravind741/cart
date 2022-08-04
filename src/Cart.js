@@ -25,11 +25,11 @@ function Cart() {
 
 
 
-const removeProduct = id => {
+const removeProduct = (id) => {
   if (window.confirm("Are you sure to remove this product ?")) {
     addToCart.forEach((item, index) => {
           if (item.id === id) {
-            setAddToCart( addToCart.splice(index, 1))
+             addToCart.splice(index, 1)
               item.count = 1;
 
              
@@ -42,6 +42,7 @@ const removeProduct = id => {
 }
 
 if (addToCart.length === 0)
+
   return <section className='bg-warning' >
     <center><h2>Cart is Empty ...!!!</h2></center> 
 </section>
@@ -82,7 +83,22 @@ if (addToCart.length === 0)
         </MDBNavbarNav>
       </MDBContainer>
     </MDBNavbar>
-     
+
+
+
+
+    <MDBContainer  fluid light style={{ backgroundColor: '#f0f6f8' }}>
+     < MDBRow>
+     <MDBCol md='8'>
+
+     </MDBCol>
+     <MDBCol md='4'>
+     <h1 className="text-danger fw-bold">
+        Totalcost : <span class="badge badge-primary">${sum}</span>
+      </h1>
+     </MDBCol>
+     </MDBRow>
+      </MDBContainer> 
     
 {
     
