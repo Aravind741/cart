@@ -10,7 +10,7 @@ import { MDBContainer } from 'mdb-react-ui-kit';
 import {
   MDBNavbar,
  
-  MDBIcon,
+  MDBIcon, 
   MDBNavbarNav,
   MDBNavbarItem,
   MDBNavbarLink,
@@ -42,7 +42,15 @@ const removeProduct = (id) => {
 }
 
 if (addToCart.length === 0)
-  return <section className="text-danger fw-bold"><center><h2>Cart is Empty ...!!!</h2></center> </section>
+
+  return <section className='bg-warning' >
+    <center><h2>Cart is Empty ...!!!</h2></center> 
+</section>
+
+
+
+
+
 
 
 //price calculation
@@ -55,6 +63,8 @@ if (addToCart.length === 0)
     return (
 
        <div > 
+       
+
       <MDBNavbar expand='lg' light style={{ backgroundColor: '#adc2eb' }}>
       <MDBContainer fluid>
         <MDBNavbarNav>
@@ -113,6 +123,8 @@ if (addToCart.length === 0)
   </MDBCol>
   <MDBCol md='4' >
   <img height="200px" width="200px" alt={d.title} src={d.image} key={d.id} />
+
+  
               
   </MDBCol>
 </MDBRow>
@@ -127,9 +139,20 @@ if (addToCart.length === 0)
 }
 
 
-    
+
+       <div>
+        
+       <center>  <h1> Total Price :
+        <MDBBadge className='ms-2' color="success" >${sum}</MDBBadge></h1></center>
+
+        </div>
+
+          
     
 </div>    
+
+
+
       )
             }
 
