@@ -29,6 +29,9 @@ function Home() {
 
   const Addtocartfunc = (product) => {
 
+    if (window.confirm("Are you sure you want to add this product to Cart ?")) {
+
+
     const newobject ={
       id: product.id,
       title:product.title,
@@ -40,7 +43,7 @@ function Home() {
     }
     
     setAddToCart ([...addToCart,newobject])
-     
+  }
     }
  
 
